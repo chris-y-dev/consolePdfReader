@@ -42,11 +42,10 @@ namespace consolePdfReader
                 // CSV: list to keep table data from all pages:
                 var data = new List<List<string>>();
 
-            
+
 
                 for (int i = 0; i < pdfDoc.Pages.Count; ++i)
                 {
-                    Console.WriteLine($"Page {i}");
                     // Get the table at the specified bounds:
                     var itable = pdfDoc.Pages[i].GetTable(tableBounds, tableExtrctOpt);
                     if (itable != null)
@@ -56,7 +55,6 @@ namespace consolePdfReader
                             // CSV: add next data row ignoring headers:
                             if (row > 0)
                                 data.Add(new List<string>());
-
                             for (int col = 0; col < itable.Cols.Count; ++col)
                             {
                                 var cell = itable.GetCell(row, col);
